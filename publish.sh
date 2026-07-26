@@ -1,26 +1,35 @@
 #!/bin/bash
-# Hexo 一键发布脚本（简洁输出版）
+# Hexo 一键发布脚本
+
+VERBOSE=false  # 改为 true 可输出全部日志
+
+# 根据 VERBOSE 决定输出重定向
+if [ "$VERBOSE" = true ]; then
+    HEXO_OUTPUT=""
+    GIT_OUTPUT=""
+else
+    HEXO_OUTPUT="> /dev/null 2>&1"
+    GIT_OUTPUT="> /dev/null 2>&1"
+fi
 
 echo "🔨 正在构建博客..."
 
-# 执行 hexo 清理和生成，将标准输出（INFO）重定向到 /dev/null，只保留错误输出
-if hexo clean > /dev/null 2>&1 && hexo generate > /dev/null 2>&1; then
+# 使用变量控制输出
+if eval "hexo clean $HEXO_OUTPUT" && eval "hexo generate $HEXO_OUTPUT"; then
     echo "✅ 构建成功"
 else
     echo "❌ 构建失败，请查看上方错误信息"
     exit 1
 fi
 
-# Git 操作，静默模式
-git add . > /dev/null 2>&1
+eval "git add . $GIT_OUTPUT"
 
 if [ "$1" != "" ]; then
-    git commit -m "$1" > /dev/null 2>&1
+    eval "git commit -m \"$1\" $GIT_OUTPUT"
 else
-    git commit -m "📝 更新博客内容 $(date '+%Y-%m-%d %H:%M:%S')" > /dev/null 2>&1
+    eval "git commit -m \"📝 更新博客内容 $(date '+%Y-%m-%d %H:%M:%S')\" $GIT_OUTPUT"
 fi
 
-# 推送，只显示进度条（去掉 -v 即可）
 echo "🚀 正在推送到 GitHub..."
 git push --quiet
 
