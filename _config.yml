@@ -4,12 +4,12 @@
 
 # 网站
 title: Le的一亩三分地 
-subtitle: ''
+subtitle: '记录技术、学习与生活'
 description: ''
 keywords:
 author: Le
 language: zh-CN
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## 在这里设置你的网站网址。例如，如果你使用 GitHub Pages，请将网址设置为 'https://username.github.io/project'
