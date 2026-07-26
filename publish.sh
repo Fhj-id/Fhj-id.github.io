@@ -1,7 +1,7 @@
 #!/bin/bash
 # Hexo 一键发布脚本
 
-VERBOSE=false  # 改为 true 可输出全部日志
+VERBOSE=true  # 改为 true 可输出全部日志
 
 # 根据 VERBOSE 决定输出重定向
 if [ "$VERBOSE" = true ]; then
