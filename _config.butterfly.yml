@@ -1,0 +1,298 @@
+# ============================================================
+# Butterfly 主题配置文件
+# ============================================================
+# 说明：此文件放在博客根目录，Hexo 会自动读取
+# 所有配置项均来自主题默认配置，可按需修改
+# ============================================================
+
+# ------------------------------------------------------------
+# 基本信息
+# ------------------------------------------------------------
+
+# 导航栏菜单
+menu:
+  首页: / || fas fa-home
+  时间轴: /archives/ || fas fa-archive
+  分类: /categories/ || fas fa-folder-open
+  标签: /tags/ || fas fa-tags
+  关于: /about/ || fas fa-heart
+#  友链: /link/ || fas fa-link
+
+# 网站图标
+favicon: /img/favicon.ico
+
+# 网站默认封面图（当文章没有设置封面时使用）
+default_top_img: https://picsum.photos/800/400
+
+# 文章默认封面图
+default_cover: https://picsum.photos/800/400?random=1
+
+
+# ------------------------------------------------------------
+# 首页相关
+# ------------------------------------------------------------
+
+# 首页顶部图
+index_top_img: https://picsum.photos/1200/600
+
+# 首页副标题设置
+subtitle:
+  enable: true
+  effect: true
+  loop: true
+  source: 1  # 1: 按 sub 列表顺序显示, 2: 随机显示
+  sub:
+    - 记录技术成长，分享编程思考
+    - 学无止境，行以致远
+    - 欢迎来到我的技术博客 🚀
+
+# 首页文章卡片布局
+# 1: 封面图在左，信息在右
+# 2: 封面图在右，信息在左
+# 3: 封面图与信息左右交替
+# 4: 封面图在上，信息在下
+# 5: 信息在上，封面图在下
+index_post_layout: 1
+
+# 首页是否显示分类/标签
+index_categories: true
+index_tags: true
+
+
+# ------------------------------------------------------------
+# 顶部图设置
+# ------------------------------------------------------------
+
+# 是否显示顶部图
+top_img: true
+
+# 顶部图高度
+top_img_height: 300px
+
+
+# ------------------------------------------------------------
+# 文章相关
+# ------------------------------------------------------------
+
+# 文章标题是否大写
+post_meta:
+  page:
+    date_type: created  # created: 创建时间, updated: 更新时间
+    date_format: YYYY-MM-DD HH:mm:ss
+  post:
+    date_type: created
+    date_format: YYYY-MM-DD HH:mm:ss
+
+# 文章顶部图
+post_top_img: 
+
+# 文章版权信息
+post_copyright:
+  enable: true
+  license: CC BY-NC-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+# 文章赞赏
+reward:
+  enable: false
+  text: 如果觉得文章对你有帮助，欢迎打赏支持 😊
+  QR_code:
+    - img: https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/alipay.jpg
+      link: /
+    - img: https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/wechat.jpg
+      link: /
+
+
+# ------------------------------------------------------------
+# 侧边栏
+# ------------------------------------------------------------
+
+# 侧边栏位置 (left / right)
+aside:
+  enable: true
+  position: right
+  display: 
+    archive: true
+    tag: true
+    category: true
+
+# 侧边栏卡片
+card_author:
+  enable: true
+  description: 一个热爱技术的小白
+  social:
+    - name: GitHub
+      icon: fab fa-github
+      url: https://github.com/Fhj-id
+    - name: 邮箱
+      icon: fas fa-envelope
+      url: mailto:873663920@qq.com
+    # 按需添加更多社交链接
+
+card_announcement:
+  enable: false
+  content: 欢迎来到我的博客 🎉
+
+card_categories:
+  enable: true
+  limit: 8
+
+card_tags:
+  enable: true
+  limit: 40
+
+card_archives:
+  enable: true
+  type: monthly
+  format: YYYY年MM月
+  order: -1
+  limit: 12
+
+card_recent_post:
+  enable: true
+  limit: 6
+  sort: date
+  order: -1
+
+card_webinfo:
+  enable: true
+  post_count: true
+  category_count: true
+  tag_count: true
+  word_count: true
+  visit_count: true
+
+
+# ------------------------------------------------------------
+# 代码高亮
+# ------------------------------------------------------------
+
+highlight_theme: mac  # 可选: default, darker, pale, light, ocean, mac, mac-light, mac-dark
+
+# 是否复制代码
+code_copy: true
+
+
+# ------------------------------------------------------------
+# 评论系统
+# ------------------------------------------------------------
+
+# 评论系统（这里全部关闭，如需启用请选择一种）
+comments:
+  enable: false
+  type: # 可选: valine, waline, twikoo, giscus, gitalk, disqus, disqusjs, utterances, artalk, remark42, livere
+
+# 常用评论系统配置示例（如需启用，取消注释并填写对应配置）
+# valine:
+#   appId: 你的appId
+#   appKey: 你的appKey
+#   avatar: monsterid
+#   placeholder: 说点什么吧...
+#   pageSize: 10
+#   recordIP: false
+
+# waline:
+#   serverURL: 你的服务器地址
+#   pageSize: 10
+#   avatar: monsterid
+#   requiredMeta:
+#     - name
+#     - email
+#     - url
+
+# twikoo:
+#   envId: 你的envId
+#   region: ap-shanghai
+
+
+# ------------------------------------------------------------
+# 搜索系统
+# ------------------------------------------------------------
+
+# 本地搜索
+local_search:
+  enable: true
+  unescape: false
+  preload: false
+
+
+# ------------------------------------------------------------
+# 主题颜色
+# ------------------------------------------------------------
+
+theme_color:
+  enable: true
+  main: "#3b70fc"
+  paginator: "#00ccff"
+  button_hover: "#ff7242"
+  text_selection: "#3b70fc"
+
+
+# ------------------------------------------------------------
+# 页脚
+# ------------------------------------------------------------
+
+footer:
+  owner:
+    enable: true
+    since: 2026
+  custom_text: Powered by Hexo & Butterfly 🦋
+  copyright: true
+
+
+# ------------------------------------------------------------
+# 其他功能
+# ------------------------------------------------------------
+
+# 是否显示阅读进度
+progress_bar: true
+
+# 是否在文章底部显示最后更新日期
+post_lastUpdated:
+  enable: true
+  text: 本文最后更新于
+
+# 是否开启文章目录
+toc:
+  enable: true
+  number: true
+  expand: true
+  style: 1  # 1: 自动展开, 2: 折叠
+
+# 自动生成文章摘要
+auto_excerpt:
+  enable: true
+  length: 150
+
+# PWA 支持
+pwa:
+  enable: false
+  manifest: /manifest.json
+
+# 字数统计
+word_count:
+  enable: true
+  count: true
+  time: true
+
+
+# ------------------------------------------------------------
+# 注入自定义 CSS/JS
+# ------------------------------------------------------------
+
+# 如果你有自己的 CSS/JS 文件，放在 source/custom/ 目录下
+# 然后在这里引入
+inject:
+  head:
+    # - '<link rel="stylesheet" href="/custom/css/custom.css">'
+  bottom:
+    # - '<script src="/custom/js/custom.js"></script>'
+
+
+# ------------------------------------------------------------
+# 第三方 CDN
+# ------------------------------------------------------------
+
+CDN:
+  option: local  # local: 本地, cdn: 使用 CDN
+  # cdn_url: https://cdn.jsdelivr.net/npm/
