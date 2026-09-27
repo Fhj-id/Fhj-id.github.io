@@ -1,0 +1,118 @@
+/* ============================================================
+   Fluid 风格改造（在 Butterfly 5.6.1 基础上叠加）
+   目标：全屏 banner(主题已 full_page) + 图左文右紧凑列表
+        + 蓝灰主色(#2f4154) + 首页无侧栏居中
+   说明：所有规则走 inject 注入，不改动主题源码；
+        用 !important 兜底，确保覆盖主题默认样式。
+   ============================================================ */
+
+/* 1. 主色 → Fluid 的 #2f4154 蓝灰（覆盖主题 CSS 变量） */
+:root {
+  --btn-bg: #2f4154;
+  --text-bg-hover: rgba(47, 65, 84, 0.7);
+  --theme-color: #2f4154;
+  --hover-bg: rgba(47, 65, 84, 0.06);
+}
+[data-theme="dark"] {
+  --btn-bg: #3a4d63;
+  --text-bg-hover: rgba(58, 77, 99, 0.9);
+  --hover-bg: rgba(58, 77, 99, 0.12);
+}
+
+/* 2. 全屏 banner 兜底（full_page 默认 100vh，这里保险） */
+#page-header.full_page {
+  height: 100vh !important;
+}
+
+/* 打字机副标题更克制一点 */
+#subtitle {
+  font-weight: 300 !important;
+  letter-spacing: 0.5px;
+}
+
+/* 3. 首页文章列表：去卡片化，图左文右，留白 + 分隔线 */
+#recent-posts .recent-post-item {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  height: auto !important;
+  margin-bottom: 0 !important;
+  padding: 1.6rem 0 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  align-items: center !important;
+}
+#recent-posts .recent-post-item:last-child {
+  border-bottom: none !important;
+}
+
+/* 封面：固定比例缩略图，圆角，像 Fluid 的 index-img */
+#recent-posts .recent-post-item .post_cover {
+  width: 36% !important;
+  height: 11em !important;
+  border-radius: 6px !important;
+  flex: 0 0 36% !important;
+}
+#recent-posts .recent-post-item .post_cover .post-bg {
+  border-radius: 6px !important;
+}
+
+/* 信息区 */
+#recent-posts .recent-post-item > .recent-post-info {
+  width: 64% !important;
+  padding-left: 1.6rem !important;
+  flex: 1 1 auto !important;
+}
+
+/* 标题：大号、主色、克制加粗 */
+#recent-posts .recent-post-item > .recent-post-info > .article-title {
+  font-size: 1.35rem !important;
+  font-weight: 600 !important;
+  line-height: 1.45 !important;
+  color: #2f4154 !important;
+}
+#recent-posts .recent-post-item > .recent-post-info > .article-title:hover {
+  color: #1c2b3a !important;
+}
+
+/* 摘要：灰色、宽松行距 */
+#recent-posts .recent-post-item > .recent-post-info > .content {
+  margin-top: 0.7rem !important;
+  color: #5b5b5b !important;
+  font-size: 0.92rem !important;
+  line-height: 1.7 !important;
+}
+
+/* 元信息（日期/分类/标签）：小号浅灰 */
+#recent-posts .recent-post-item > .recent-post-info > .article-meta-wrap {
+  margin-top: 0.9rem !important;
+  color: #9a9a9a !important;
+  font-size: 0.8rem !important;
+}
+
+/* 4. 移动端：封面在上的堆叠布局保持，去掉固定高度 */
+@media screen and (max-width: 768px) {
+  #recent-posts .recent-post-item .post_cover {
+    width: 100% !important;
+    height: 12em !important;
+    flex: none !important;
+  }
+  #recent-posts .recent-post-item > .recent-post-info {
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-top: 1rem !important;
+  }
+}
+
+/* 5. 分类/标签等链接 hover 用主色，统一观感 */
+a:hover,
+.card-category-list-link:hover,
+.card-tag-cloud a:hover {
+  color: #2f4154 !important;
+}
+
+/* 6. 首页单栏：列表容器居中限宽，贴近 Fluid 的居中窄列 */
+html.hide-aside .layout {
+  max-width: 1100px;
+  margin: 0 auto;
+}

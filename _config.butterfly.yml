@@ -225,7 +225,9 @@ lazyload:
 
 inject:
   head:
+    - <link rel="stylesheet" href="/css/custom.css">
   bottom:
+    - <script>if(window.GLOBAL_CONFIG_SITE&&GLOBAL_CONFIG_SITE.pageType==='home'){document.documentElement.classList.add('hide-aside')}</script>
 
 CDN:
   option: local
