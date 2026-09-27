@@ -38,3 +38,7 @@ echo "🚀 正在推送到 GitHub..."
 git push --quiet
 
 echo "✅ 发布完成！等待 1-2 分钟访问 https://Fhj-id.github.io"
+
+# 主动推送给 Bing / Yandex 等（Google 不支持 IndexNow，走 sitemap 自然抓取）
+# 失败不影响发布结果
+python3 push-indexnow.py 2>&1 | sed 's/^/   /'
