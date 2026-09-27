@@ -33,7 +33,10 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
+# 这些文件原样复制，不套主题模板（Google 站点验证文件必须是纯文本）
 skip_render:
+  - googleba801c77a9fe9b47.html
+  - robots.txt
 
 # 写作
 new_post_name: :title.md # 新帖文件名

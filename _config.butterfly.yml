@@ -1,257 +1,145 @@
 # ============================================================
-# Butterfly 主题配置文件
+# Butterfly 主题配置（5.6.1 键名结构）
 # ============================================================
-# 说明：此文件放在博客根目录，Hexo 会自动读取
-# 所有配置项均来自主题默认配置，可按需修改
+# 重要：本文件已按 5.x 结构重写。4.x 的键名（card_author 写在顶层、
+# local_search / word_count / highlight_theme / top_img 等）在 5.x
+# 全部无效，会被静默忽略。改配置前先对照
+# node_modules/hexo-theme-butterfly/_config.yml 确认键名和层级。
 # ============================================================
 
-# ------------------------------------------------------------
-# 基本信息
-# ------------------------------------------------------------
+# --------------------------------------
+# 导航
+# --------------------------------------
+nav:
+  logo:
+  display_title: true
+  display_post_title: true
+  fixed: false
 
-# 导航栏菜单
 menu:
   首页: / || fas fa-home
   时间轴: /archives/ || fas fa-archive
   分类: /categories/ || fas fa-folder-open
   标签: /tags/ || fas fa-tags
   关于: /about/ || fas fa-heart
-#  友链: /link/ || fas fa-link
 
-# 网站图标
+# --------------------------------------
+# 图标与顶部图
+# --------------------------------------
 favicon: /img/favicon.ico
+avatar:
+  img: /img/favicon.png
+  effect: true
 
-# 网站默认封面图（当文章没有设置封面时使用，随机取一张）
+disable_top_img: false
 default_top_img: /img/index-top-img.png
+index_img: /img/index-top-img.png
+archive_img: /img/cover-2.png
+tag_img: /img/cover-3.png
+category_img: /img/cover-1.png
+index_top_img_height: 300
 
-# 文章默认封面图
-default_cover:
-  - /img/cover-1.png
-  - /img/cover-2.png
-  - /img/cover-3.png
+# 文章封面（必须写在 cover 下，写顶层无效）
+cover:
+  index_enable: true
+  aside_enable: true
+  archives_enable: true
+  default_cover:
+    - /img/cover-1.png
+    - /img/cover-2.png
+    - /img/cover-3.png
 
+# 主题自带 404 关闭，改用 source/404.md
+error_404:
+  enable: false
 
-# ------------------------------------------------------------
-# 首页相关
-# ------------------------------------------------------------
-
-# 首页顶部图
-index_top_img: /img/index-top-img.png
-
-# 首页副标题设置
+# --------------------------------------
+# 首页
+# --------------------------------------
 subtitle:
   enable: true
   effect: true
-  loop: true
-  source: 1  # 1: 按 sub 列表顺序显示, 2: 随机显示
+  source: 1
   sub:
     - 从 CV 到大模型，一路的实操记录
     - 机器学习 / 深度学习 / LLM 微调
     - Linux 桌面与终端效率折腾
     - 本机跑通过的才写 🚀
 
-# 首页文章卡片布局
-# 1: 封面图在左，信息在右
-# 2: 封面图在右，信息在左
-# 3: 封面图与信息左右交替
-# 4: 封面图在上，信息在下
-# 5: 信息在上，封面图在下
-index_post_layout: 1
+# 首页文章布局：1 封面左 2 封面右 3 左右交替 4 封面在上 5 封面在下
+index_layout: 1
+# 摘要：1 全文 / 2 自动截取 / 3 按 more 标签截断
+index_post_content:
+  method: 2
+  length: 150
 
-# 首页是否显示分类/标签
-index_categories: true
-index_tags: true
+# --------------------------------------
+# 文章页
+# --------------------------------------
+toc:
+  post: true
+  page: true
+  number: true
+  expand: true
+  style_simple: false
+  scroll_percent: true
 
-
-# ------------------------------------------------------------
-# 顶部图设置
-# ------------------------------------------------------------
-
-# 是否显示顶部图
-top_img: true
-
-# 顶部图高度
-top_img_height: 300px
-
-
-# ------------------------------------------------------------
-# 文章相关
-# ------------------------------------------------------------
-
-# 文章标题是否大写
 post_meta:
   page:
-    date_type: created  # created: 创建时间, updated: 更新时间
+    date_type: both
     date_format: YYYY-MM-DD HH:mm:ss
   post:
-    date_type: created
+    date_type: both
     date_format: YYYY-MM-DD HH:mm:ss
 
-# 文章顶部图
-post_top_img: 
-
-# 文章版权信息
 post_copyright:
   enable: true
+  decode: false
+  author_href: https://github.com/Fhj-id
   license: CC BY-NC-SA 4.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
-# 文章赞赏
 reward:
   enable: false
-  text: 如果觉得文章对你有帮助，欢迎打赏支持 😊
-  QR_code:
-    - img: https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/alipay.jpg
-      link: /
-    - img: https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/wechat.jpg
-      link: /
 
-
-# ------------------------------------------------------------
-# 侧边栏
-# ------------------------------------------------------------
-
-# 侧边栏位置 (left / right)
-aside:
-  enable: true
-  position: right
-  display: 
-    archive: true
-    tag: true
-    category: true
-
-# 侧边栏卡片
-card_author:
-  enable: true
-  description: 折腾 Linux 和自动化，写自己跑通过的东西
-  social:
-    - name: GitHub
-      icon: fab fa-github
-      url: https://github.com/Fhj-id
-    # 邮箱已移除：真实邮箱会被搜索引擎抓取并可反查到本人，如需联系走 GitHub Issues
-
-card_announcement:
-  enable: false
-  content: 欢迎来到我的博客 🎉
-
-card_categories:
-  enable: true
-  limit: 8
-
-card_tags:
-  enable: true
-  limit: 40
-
-card_archives:
-  enable: true
-  type: monthly
-  format: YYYY年MM月
-  order: -1
-  limit: 12
-
-card_recent_post:
-  enable: true
-  limit: 6
-  sort: date
-  order: -1
-
-card_webinfo:
-  enable: true
-  post_count: true
-  category_count: true
-  tag_count: true
-  word_count: true
-  visit_count: true
-
-
-# ------------------------------------------------------------
 # 代码高亮
-# ------------------------------------------------------------
+code_blocks:
+  theme: mac
+  copy: true
+  language: true
+  shrink: false
+  fullpage: false
+  macStyle: false
+  height_limit: false
+  word_wrap: false
 
-highlight_theme: mac  # 可选: default, darker, pale, light, ocean, mac, mac-light, mac-dark
-
-# 是否复制代码
-code_copy: true
-
-
-# ------------------------------------------------------------
-# 评论系统
-# ------------------------------------------------------------
-
-# 评论系统（giscus：基于 GitHub Discussions，免费无广告）
-# 启用步骤：
-# 1. 打开 https://github.com/Fhj-id/Fhj-id.github.io/settings -> General -> Features
-#    勾选 Discussions
-# 2. 安装 giscus app：https://github.com/apps/giscus （只授权这个仓库即可）
-# 3. 打开 https://giscus.app/zh-CN ，填入仓库名 Fhj-id/Fhj-id.github.io
-#    选择 Discussion 分类（建议用 Announcements）
-#    页面底部会生成 repoId 和 categoryId，复制到下面对应位置
-# 4. 把 enable 改为 true，发布后文章底部就有评论
-comments:
-  enable: false
-  type: giscus
-
-giscus:
-  repo: Fhj-id/Fhj-id.github.io
-  repo_id: R_kgDOUtkQNg      # 已自动获取
-  category_id:               # 待获取，见下方说明
-  category_name: General
-  theme:
-    light: light
-    dark: dark
-  data-emit-metadata: 0
-  data-lang: zh-CN
-
-# 常用评论系统配置示例（如需启用，取消注释并填写对应配置）
-# valine:
-#   appId: 你的appId
-#   appKey: 你的appKey
-#   avatar: monsterid
-#   placeholder: 说点什么吧...
-#   pageSize: 10
-#   recordIP: false
-
-# waline:
-#   serverURL: 你的服务器地址
-#   pageSize: 10
-#   avatar: monsterid
-#   requiredMeta:
-#     - name
-#     - email
-#     - url
-
-# twikoo:
-#   envId: 你的envId
-#   region: ap-shanghai
-
-
-# ------------------------------------------------------------
-# 搜索系统
-# ------------------------------------------------------------
-
-# 本地搜索
-local_search:
+# 字数与阅读时长（依赖 hexo-wordcount）
+wordcount:
   enable: true
-  unescape: false
-  preload: false
+  post_wordcount: true
+  min2read: true
+  total_wordcount: true
 
+# 不蒜子统计：境外服务国内加载不出来，全关
+busuanzi:
+  site_uv: false
+  site_pv: false
+  page_pv: false
 
-# ------------------------------------------------------------
-# 主题颜色
-# ------------------------------------------------------------
+# --------------------------------------
+# 搜索
+# --------------------------------------
+search:
+  use: local_search
+  placeholder: 搜索文章…
+  local_search:
+    preload: false
+    top_n_per_article: 1
+    unescape: false
 
-theme_color:
-  enable: true
-  main: "#3b70fc"
-  paginator: "#00ccff"
-  button_hover: "#ff7242"
-  text_selection: "#3b70fc"
-
-
-# ------------------------------------------------------------
+# --------------------------------------
 # 页脚
-# ------------------------------------------------------------
-
+# --------------------------------------
 footer:
   owner:
     enable: true
@@ -259,60 +147,85 @@ footer:
   custom_text: Powered by Hexo & Butterfly 🦋
   copyright: true
 
-
-# ------------------------------------------------------------
-# 其他功能
-# ------------------------------------------------------------
-
-# 是否显示阅读进度
-progress_bar: true
-
-# 是否在文章底部显示最后更新日期
-post_lastUpdated:
+# --------------------------------------
+# 侧边栏（卡片必须写在 aside 下）
+# --------------------------------------
+aside:
   enable: true
-  text: 本文最后更新于
+  position: right
+  display:
+    archive: true
+    tag: true
+    category: true
+  card_author:
+    enable: true
+    description: 折腾 Linux 和自动化，写自己跑通过的东西
+    button:
+      enable: true
+      icon: fab fa-github
+      text: Follow Me
+      link: https://github.com/Fhj-id   # 主题默认是 github.com/xxxxxx 死链
+    # 邮箱已移除：真实邮箱会被搜索引擎抓取并可反查到本人，联系走 GitHub Issues
+  card_announcement:
+    enable: false
+    content: 欢迎来到我的博客 🎉
+  card_categories:
+    enable: true
+    limit: 8
+  card_tags:
+    enable: true
+    limit: 40
+  card_archives:
+    enable: true
+    type: monthly
+    format: YYYY年MM月
+    order: -1
+    limit: 12
+  card_recent_post:
+    enable: true
+    limit: 6
+    sort: date
+    sort_order: -1
+  card_webinfo:
+    enable: true
+    post_count: true
+    last_push_date: true
 
-# 是否开启文章目录
-toc:
-  enable: true
-  number: true
-  expand: true
-  style: 1  # 1: 自动展开, 2: 折叠
+rightside_scroll_percent: true
 
-# 自动生成文章摘要
-auto_excerpt:
-  enable: true
-  length: 150
+# --------------------------------------
+# 评论（giscus，基于 GitHub Discussions）
+# --------------------------------------
+# 启用步骤：
+# 1. 仓库 Settings → Features 勾选 Discussions
+# 2. 安装 https://github.com/apps/giscus （只授权这一个仓库）
+# 3. 从 giscus.app 或 GitHub API 取 category_id 填到下面
+# 4. 把 comments.use 改成 giscus
+comments:
+  use:
+  text: true
+  lazyload: false
+  count: false
 
-# PWA 支持
+giscus:
+  repo: Fhj-id/Fhj-id.github.io
+  repo_id: R_kgDOUtkQNg        # 已通过 API 获取
+  category_id:                 # 待填：开启 Discussions 后获取
+  light_theme: light
+  dark_theme: dark
+
+# --------------------------------------
+# 其他
+# --------------------------------------
 pwa:
   enable: false
-  manifest: /manifest.json
 
-# 字数统计
-word_count:
-  enable: true
-  count: true
-  time: true
+lazyload:
+  enable: false
 
-
-# ------------------------------------------------------------
-# 注入自定义 CSS/JS
-# ------------------------------------------------------------
-
-# 如果你有自己的 CSS/JS 文件，放在 source/custom/ 目录下
-# 然后在这里引入
 inject:
   head:
-    # - '<link rel="stylesheet" href="/custom/css/custom.css">'
   bottom:
-    # - '<script src="/custom/js/custom.js"></script>'
-
-
-# ------------------------------------------------------------
-# 第三方 CDN
-# ------------------------------------------------------------
 
 CDN:
-  option: local  # local: 本地, cdn: 使用 CDN
-  # cdn_url: https://cdn.jsdelivr.net/npm/
+  option: local
