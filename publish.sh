@@ -32,6 +32,16 @@ else
     exit 1
 fi
 
+# 样式编译失败时 hexo 仍返回成功，但 CSS 是空的（页面会变成无样式的裸 HTML）
+# 所以构建后必须校验 CSS 实际大小
+CSS_SIZE=$(wc -c < public/css/index.css 2>/dev/null || echo 0)
+if [ "$CSS_SIZE" -lt 10000 ]; then
+    echo "❌ public/css/index.css 只有 ${CSS_SIZE} 字节，样式编译失败"
+    echo "   常见原因：_config.butterfly.yml 里某个值类型不对（如高度写成 300 而非 300px，"
+    echo "   或 code_blocks.theme 用了旧版本才有的名字）。把 VERBOSE 改成 true 重跑看完整报错。"
+    exit 1
+fi
+
 eval "git add . $GIT_OUTPUT"
 
 if [ "$1" != "" ]; then

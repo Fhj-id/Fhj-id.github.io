@@ -37,7 +37,7 @@ index_img: /img/index-top-img.png
 archive_img: /img/cover-2.png
 tag_img: /img/cover-3.png
 category_img: /img/cover-1.png
-index_top_img_height: 300
+index_top_img_height: 300px
 
 # 文章封面（必须写在 cover 下，写顶层无效）
 cover:
@@ -104,7 +104,7 @@ reward:
 
 # 代码高亮
 code_blocks:
-  theme: mac
+  theme: light
   copy: true
   language: true
   shrink: false
