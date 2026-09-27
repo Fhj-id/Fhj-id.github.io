@@ -12,10 +12,13 @@ type: about
 
 ## 最近在折腾
 
+- 机器学习与深度学习：PyTorch 训练调参、模型部署踩坑
+- 计算机视觉：图像处理、检测类的实战记录
+- 大模型方向：LLM 微调（LoRA / LlamaFactory）、本地推理环境搭建
+- LLM 应用：Dify 工作流与 Agent 搭建
 - Linux 桌面与终端效率（zsh / tmux / 各类终端工具）
-- Python 写点自动化小工具
-- Docker 容器化与环境隔离
 - ROS 2（纯兴趣方向）
+- Docker 容器化与环境隔离
 
 ## 怎么用这个站
 

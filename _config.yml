@@ -5,8 +5,8 @@
 # 网站
 title: Le的一亩三分地 
 subtitle: '记录技术、学习与生活'
-description: '记 Linux 桌面、Python 自动化的折腾笔记，都是本机跑通过才写的'
-keywords: Linux,Ubuntu,zsh,Docker,Python,ROS2,Hexo,终端效率
+description: '记机器学习、大模型微调与 CV 的实操笔记，也有 Linux / Python 的日常折腾，全部本机跑通过才写'
+keywords: 机器学习,深度学习,计算机视觉,大模型微调,LoRA,LlamaFactory,Dify,PyTorch,CUDA,Python,Linux,Ubuntu
 author: Le
 language: zh-CN
 timezone: 'Asia/Shanghai'
