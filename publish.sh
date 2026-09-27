@@ -16,6 +16,12 @@ else
     GIT_OUTPUT="> /dev/null 2>&1"
 fi
 
+# 发布前隐私自查（命中敏感词直接中断，别把不该发的发出去）
+if ! bash check-privacy.sh; then
+    echo "❌ 发布已取消"
+    exit 1
+fi
+
 echo "🔨 正在构建博客..."
 
 # 使用变量控制输出
@@ -35,9 +41,13 @@ else
 fi
 
 echo "🚀 正在推送到 GitHub..."
-git push --quiet
-
-echo "✅ 发布完成！等待 1-2 分钟访问 https://Fhj-id.github.io"
+# git push 偶发报 408 但数据其实已到远端，报错时不要慌，用 git fetch && git status -sb 确认
+if git push --quiet; then
+    echo "✅ 发布完成！等待 1-2 分钟访问 https://Fhj-id.github.io"
+else
+    echo "⚠️ 推送命令报错，先确认远端是否真的收到了：git fetch && git status -sb"
+    exit 1
+fi
 
 # 主动推送给 Bing / Yandex 等（Google 不支持 IndexNow，走 sitemap 自然抓取）
 # 失败不影响发布结果
