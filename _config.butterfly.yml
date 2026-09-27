@@ -193,9 +193,9 @@ comments:
 
 giscus:
   repo: Fhj-id/Fhj-id.github.io
-  repo_id:          # 从 giscus.app 获取后填入
-  category_id:      # 从 giscus.app 获取后填入
-  category_name: Announcements
+  repo_id: R_kgDOUtkQNg      # 已自动获取
+  category_id:               # 待获取，见下方说明
+  category_name: General
   theme:
     light: light
     dark: dark
